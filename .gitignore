@@ -1,0 +1,19 @@
+# Microservices Applications
+node_modules
+yarn.lock
+.env
+dist
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
