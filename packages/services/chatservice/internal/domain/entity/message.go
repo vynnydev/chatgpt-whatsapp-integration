@@ -34,7 +34,7 @@ func NewMessage(role, content string, model *Model) (*Message, error) {
 }
 
 func (m *Message) Validate() error {
-	if m.Role != "user" && m.Role != "system" && m.Role != "assistent" {
+	if m.Role != "user" && m.Role != "system" && m.Role != "assistant" {
 		return errors.New("invalid role")
 	}
 	if m.Content == "" {

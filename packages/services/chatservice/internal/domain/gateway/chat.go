@@ -3,7 +3,7 @@ package gateway
 import (
 	"context"
 
-	"github.com/vynnydev/chatgpt-whatsapp-integration/chatservice/internal/domain/entity"
+	"github.com/vynnydev/chatgpt-whatsapp-integration/packages/services/chatservice/internal/domain/entity"
 )
 
 type ChatGateway interface {

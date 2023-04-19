@@ -30,12 +30,12 @@ type Chat struct {
 
 func NewChat(userID string, initialSystemMessage *Message, chatConfig *ChatConfig) (*Chat, error) {
 	chat := &Chat{
-		ID: uuid.New().String(),
-		UserID: userID,
+		ID:                   uuid.New().String(),
+		UserID:               userID,
 		InitialSystemMessage: initialSystemMessage,
-		Status: "active",
-		Config: chatConfig,
-		TokenUsage: 0,
+		Status:               "active",
+		Config:               chatConfig,
+		TokenUsage:           0,
 	}
 	chat.AddMessage(initialSystemMessage)
 
@@ -52,9 +52,10 @@ func (c *Chat) Validate() error {
 	if c.Status != "active" && c.Status != "ended" {
 		return errors.New("invalid status")
 	}
-	if c.Config .Temperature < 0 || c.Config.Temperature > 2 {
+	if c.Config.Temperature < 0 || c.Config.Temperature > 2 {
 		return errors.New("invalid temperature")
 	}
+	// ... more validations for config
 	return nil
 }
 
@@ -63,7 +64,7 @@ func (c *Chat) AddMessage(m *Message) error {
 		return errors.New("chat is ended. no more messages allowed")
 	}
 	for {
-		if c.Config.Model.GetMaxTokens() >= m.GetQtdTokens() + c.TokenUsage {
+		if c.Config.Model.GetMaxTokens() >= m.GetQtdTokens()+c.TokenUsage {
 			c.Messages = append(c.Messages, m)
 			c.RefreshTokenUsage()
 			break
