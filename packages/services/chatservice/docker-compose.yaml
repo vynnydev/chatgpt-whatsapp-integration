@@ -9,6 +9,8 @@ services:
     ports:
       - "8081:8080"
       - "50052:50051"
+    networks:
+      - fcexperience
 
   mysql:
     image: mysql:8
@@ -22,3 +24,7 @@ services:
       - 3306:3306  
     volumes:
       - .docker/mysql:/var/lib/mysql
+
+networks:
+  fcexperience:
+    external: true
